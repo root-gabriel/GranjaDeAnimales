@@ -61,10 +61,23 @@ Si algún parámetro no cumple estas condiciones, se lanza una excepción Illega
         }
     }
 
+    /*
+    Método getCodigo
+    Devuelve el código asignado a un objeto
+    @return codigo devuelve el valor de código actual de la objeto
+    */
     public String getCodigo() {
         return codigo;
     }
 
+     /*
+    Método setCodigo
+    Modifica el codigo nuevo en una objeto por el codigo del parametro pedido
+    Comprueba que el codigo es una cadena de 5 caracteres alfacnumericos y en caso contrario devuelve una excepción 
+    this.codigo variable que hace referencia al código actual de la objeto
+    @param codigo cadena de caracteres que serán el nuevo código de la objeto
+    @throws IllegalArgumentException() en caso de que el nuevo codigo no cumpla con los parámetros devuelve esta excepción
+    */
     public void setCodigo(String codigo) {
         if (!codigo.matches("[0-9a-z]{5}")) {
             throw new IllegalArgumentException();
@@ -73,10 +86,24 @@ Si algún parámetro no cumple estas condiciones, se lanza una excepción Illega
         }
     }
 
+     /*
+    Método getFechaNacimiento
+    Devuelve la fecha de nacimiento de la objeto
+    @return fechaNacimiento devuelve el valor de fechaNacimiento de la objeto
+    */
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
+     /*
+    Método setFechaNacimiento
+    Proporciona el parámetro fechaNacimiento de una nueva objeto
+    convierte el paramatro fecha en una variable LocalDate
+    en caso de que fechaNacimiento no tenga el formato correcto devuelve la excepción IllegalArgumentException
+    fecha variable de tipo LocalDate
+    @param fechaNacimiento cadena de caracteres que debería estar en formato AAAA-MM-DD
+    @throws IllegalArgumentException() en caso de que el formato de la fecha sea incorrecto
+    */
     public void setFechaNacimiento(String fechaNacimiento) {
         LocalDate fecha;
 
@@ -89,10 +116,24 @@ Si algún parámetro no cumple estas condiciones, se lanza una excepción Illega
         this.fechaNacimiento = fecha;
     }
 
+     /*
+    Método getSexo
+    Devuelve el sexo de la objeto 
+    @return sexo nos devuleve el valor de sexo de la objeto
+    */
     public char getSexo() {
         return sexo;
     }
 
+     /*
+    Método setSexo
+    Modifica el sexo de una objeto
+    comprueba que si el carácter introducido no coincide con 'M' o 'H'
+    en caso de que se cumpla devuelve una excepción
+    en caso contrario modifica el sexo actual del animal por el parametro introducido
+    this.sexo variable que contiene el valor actual de sexo en la objeto
+    @param sexo parametro char que debe coincidir con el valor 'M' o 'F'
+    */
     public void setSexo(char sexo) {
         if ((sexo != 'M' && sexo != 'H')) {
             throw new IllegalArgumentException();
@@ -101,10 +142,24 @@ Si algún parámetro no cumple estas condiciones, se lanza una excepción Illega
         }
     }
 
+     /*
+    Método getPeso
+    Devuelve el peso de la objeto
+    @reurn peso devuelve el valor del peso de la objeto
+    */
     public double getPeso() {
         return peso;
     }
 
+     /*
+    Método setPeso
+    Modifica el valor de peso de la objeto por el parametro introducido
+    comprueba si peso es menor o igual a 0 en ese caso devuelve la excepción IllegalArgumentException()
+    en caso contrario modifica el valor de peso de la objeto por el parametro introducido
+    this.peso variable que hace referencia al valor actual de peso en la objeto
+    @param peso parametro de tipo double que contiene el valor que queremos asignar a peso
+    @throws IllegalArgumentException() si el peso resulta ser menor o igual a 0 devuelve esta excepción
+    */
     public void setPeso(double peso) {
         if (peso <= 0) {
             throw new IllegalArgumentException();
@@ -113,6 +168,14 @@ Si algún parámetro no cumple estas condiciones, se lanza una excepción Illega
         }
     }
 
+     /*
+    Método hashCode
+    Método que sobrescribe el método hashCode
+    modifica el valor de hash mediante varias operaciones
+    para obtener el codigo hash del objeto
+    varibale hash de tipo int
+    @return hash devuelve el valor hash después de calcularlo
+    */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -123,6 +186,16 @@ Si algún parámetro no cumple estas condiciones, se lanza una excepción Illega
         return hash;
     }
 
+     /*
+    Método equals
+    Comprueba si existe o no el objeto introducido si existe devuelve true
+    en caso de que el objeto introducido sea null devuelve falso
+    en caso de que no sea capaz de encontrar la clase a la que pertenece el objeto devuelve falso
+    en final convierte el objeto a Animal y compara suss valores con la objeto actual
+    en caso de que alguno de los valores no coincida devuelve falso
+    @param obj parámetro que contiene el nombre de la objeto que vamos a comprobar en el método
+    @return true si los objetos son iguales, false si no lo son
+    */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -150,17 +223,34 @@ Si algún parámetro no cumple estas condiciones, se lanza una excepción Illega
         return true;
     }
 
+     /*
+    Método toString
+    devuelve una cadena de texto donde se nos informa del valor de los parametros de una objeto
+    @return "Animal{" + "codigo=" + codigo + ", fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + ", peso=" + peso + '}' devuelve una linea de texto donde se nos dice los valores actuales de una objeto
+    */
     @Override
     public String toString() {
         return "Animal{" + "codigo=" + codigo + ", fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + ", peso=" + peso + '}';
     }
-
+     /*
+    Método abstracto hacerSonido
+    no es un metodo implementado en Animal.java
+    */
     public abstract String hacerSonido();
-
+     /*
+    Método abstracto alegrarse
+    no es un metodo implementado en Animal.java
+    */
     public abstract String alegrarse();
-
+     /*
+    Método abstracto enfadarse
+    no es un metodo implementado en Animal.java
+    */
     public abstract String enfadarse();
-
+     /*
+    Método abstracto queSoy
+    no es un metodo implementado en Animal.java
+    */
     public abstract String queSoy();
 
 }
